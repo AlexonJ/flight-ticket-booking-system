@@ -1,0 +1,23 @@
+package ru.otus.spring.homeworks.models.db;
+
+public enum Authorities {
+    READ_BOOKINGS,
+    READ_BOOKINGS_OWNER,
+    CREATE_BOOKINGS,
+    DELETE_BOOKINGS,
+    DELETE_BOOKINGS_OWNER,
+
+    READ_FLIGHTS,
+    CREATE_FLIGHTS,
+    DELETE_FLIGHTS,
+
+    READ_SCHEDULE,
+    CREATE_SCHEDULE,
+    DELETE_SCHEDULE,
+
+    READ_SEATS,
+
+    READ_FLIGHTS_OWNER,
+    DELETE_FLIGHTS_OWNER
+
+}

@@ -1,0 +1,8 @@
+package ru.otus.spring.homeworks.services;
+
+import org.springframework.mail.SimpleMailMessage;
+
+public interface EmailSendingService {
+
+    void sendSimpleEmail(SimpleMailMessage message);
+}
