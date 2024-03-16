@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of all bookings</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .bookings {
+            border: 1px solid steelblue;
+            width: auto;
+            border-collapse: collapse;
+        }
+
+        .bookings tr td, th {
+            padding: 5px;
+            border: 1px solid steelblue;
+            width: 100px;
+        }
+
+        .bookings td:last-child, td:first-child {
+            width: fit-content;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .button-container button {
+            width: 150px;
+        }
+
+    </style>
+
+    <style type="text/css" th:inline="text">
+        [[h3]] {
+            background-image: url([[@{/listmark.png}]]);
+            background-repeat: no-repeat;
+            padding: 2px;
+            padding-left: 30px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h3 th:text="Bookings">Bookings:</h3>
+
+<table class="bookings">
+    <thead>
+    <tr>
+        <th rowspan="2" th:text="'ID'">ID</th>
+        <th colspan="2">Flight details</th>
+        <th rowspan="2" th:text="'Aircraft model'">Aircraft model</th>
+        <th rowspan="2" th:text="'Departure airport'">Departure airport</th>
+        <th rowspan="2" th:text="'Arrival airport'">Arrival airport</th>
+        <th rowspan="2" th:text="'Seat'">Seat</th>
+        <th colspan="2" th:text="'Passenger'">Passenger</th>
+        <th rowspan="2" colspan="2" th:text="Actions">Actions</th>
+    </tr>
+    <tr>
+        <th th:text="'Number'">Flight number</th>
+        <th th:text="'Date'">Flight date</th>
+        <th th:text="'Name'">Name</th>
+        <th th:text="'Phone'">Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="booking : ${bookings}">
+        <td th:text="${booking.getId()}"/>
+        <td th:text="${booking.getFlight().getNumber()}"/>
+        <td th:text="${booking.getFlightDate()}"/>
+        <td th:text="${booking.getFlight().getAircraft().getModel()}"/>
+        <td th:text="${booking.getFlight().getDepartureAirport().getCity()}"/>
+        <td th:text="${booking.getFlight().getArrivalAirport().getCity()}"/>
+        <td th:text="${booking.getSeat().getRow()} + ${booking.getSeat().getPosition()}"/>
+        <td th:text="${booking.getPassenger().getFirstName()} + ' ' + ${booking.getPassenger().getLastName()}"/>
+        <td th:text="${booking.getPassenger().getTelephoneNumber()}"></td>
+        <td>
+            <form th:action="@{/bookings/edit}" method="get">
+                <input type="hidden" name="id" th:value="${booking.getId()}"/>
+                <button type="submit">Edit</button>
+            </form>
+        </td>
+
+        <td>
+            <form th:action="@{/bookings/delete}" method="get">
+                <!--                <input type="hidden" name="_method" value="delete"/>-->
+                <input type="hidden" name="id" th:value="${booking.getId()}"/>
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+<div class="button-container">
+    <form th:action="@{/}" method="get">
+        <button type="submit">Home page</button>
+    </form>
+
+    <form th:action="@{/bookings/edit}" method="get">
+        <input type="hidden" name="id" th:value="0"/>
+        <button type="submit">Add new booking</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,553 @@
+{
+	"info": {
+		"_postman_id": "5318bda8-b32f-447c-84c2-f518b10972a4",
+		"name": "OTUS JavaPro final project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29616697"
+	},
+	"item": [
+		{
+			"name": "Flights",
+			"item": [
+				{
+					"name": "UI",
+					"item": [
+						{
+							"name": "Get flights for UI",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "adm",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/flights?departureAirportCode=LHR&arrivalAirportCode=CDG&flightDate=2024-02-15",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"flights"
+									],
+									"query": [
+										{
+											"key": "departureAirportCode",
+											"value": "LHR"
+										},
+										{
+											"key": "arrivalAirportCode",
+											"value": "CDG"
+										},
+										{
+											"key": "flightDate",
+											"value": "2024-02-15"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "flightsSearch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mng",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "flightservice",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"searchConditionals\": [{\r\n        \"field\": \"NUMBER\",\r\n        \"condition\": \"EQUAL\",\r\n        \"values\": [\"BA123\"]\r\n    },\r\n    {\r\n        \"field\": \"DEPARTURE_TIME\",\r\n        \"condition\": \"GREATER\",\r\n        \"values\":[\"2024-02-15T07:00:00\"]\r\n    },\r\n    {\r\n        \"field\": \"DEPARTURE_TIME\",\r\n        \"condition\": \"LESS\",\r\n        \"values\":[\"2024-02-16T00:00:00\"]\r\n    }    \r\n    \r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createFlight",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mng",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "flightservice",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 0,\r\n    \"number\": \"BZ123\",\r\n    \"airlineId\": 1,\r\n    \"aircraftId\": 1,\r\n    \"departureAirportId\": 1,\r\n    \"arrivalAirportId\": 2,\r\n    \"departureDateTime\": \"2024-02-15T07:00:00\",\r\n    \"arrivalDateTime\": \"2024-02-15T12:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flightSummary",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "flightservice",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mng",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/flights/BA123/2024-02-15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"flights",
+								"BA123",
+								"2024-02-15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "createBooking",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mng",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "bookingservice",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightNumber\": \"BA123\",\r\n    \"flightDate\": \"2024-02-15\",\r\n    \"seatRow\": 3,\r\n    \"seatPosition\": \"A\",\r\n    \"passenger\": {\r\n        \"firstName\": \"Sergei\",\r\n        \"lastName\": \"Ivanov\",\r\n        \"documentNumber\": \"123BA888999\",\r\n        \"email\": \"alexey@fadeevay.ru\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBooking",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mng",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "bookingservice",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightNumber\": \"BA123\",\r\n    \"flightDate\": \"2024-02-15\",\r\n    \"seatRow\": 1,\r\n    \"seatPosition\": \"A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seatBookingsSearch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mng",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "bookingservice",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"searchConditionals\": [{\r\n        \"field\": \"FLIGHT_NUMBER\",\r\n        \"condition\": \"EQUAL\",\r\n        \"values\": [\"BA123\"]\r\n    },\r\n    {\r\n        \"field\": \"FLIGHT_DATE\",\r\n        \"condition\": \"EQUAL\",\r\n        \"values\":[\"2024-02-15\"]\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schedule",
+			"item": [
+				{
+					"name": "getFlightSchedule",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "scheduleservice",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mng",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/schedule/BA123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schedule",
+								"BA123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifySchedule",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mng",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "scheduleservice",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightNumber\": \"BA123\",\r\n    \"schedule\": [\r\n        {\r\n            \"id\": 17,\r\n            \"departureDateTime\": \"2024-02-19T09:00:00\",\r\n            \"arrivalDateTime\": \"2024-02-19T11:00:00\"\r\n        },\r\n        {\r\n            \"id\": 18,\r\n            \"departureDateTime\": \"2024-02-20T09:00:00\",\r\n            \"arrivalDateTime\": \"2024-02-20T11:00:00\"\r\n        },\r\n        {\r\n            \"id\": 19,\r\n            \"departureDateTime\": \"2024-02-21T09:00:00\",\r\n            \"arrivalDateTime\": \"2024-02-21T11:00:00\"\r\n        }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/schedule",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSchedule",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mng",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "scheduleservice",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightNumber\": \"BA123\",\r\n    \"flightDateTimeDepartures\": [\r\n            // \"2024-02-15T08:00:00\",\r\n            // \"2024-02-16T08:00:00\"\r\n            \"2024-02-17T08:00:00\"\r\n            // \"2024-02-21T9:00:00\"\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/schedule",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seats",
+			"item": [
+				{
+					"name": "findSeats",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "adm",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightNumber\": \"BA123\",\r\n    \"flightDate\": \"2024-02-15\",\r\n    \"seatLocation\": \"BUSINESS\",\r\n    // \"seatRow\": 1\r\n    \"isFree\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/seats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"seats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Airports",
+			"item": [
+				{
+					"name": "getAirports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/airports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"airports"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

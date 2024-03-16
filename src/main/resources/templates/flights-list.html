@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Flights search</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .flights {
+            border: 1px solid steelblue;
+            width: auto;
+            border-collapse: collapse;
+        }
+
+        input:read-only {
+            background: lightgray;
+        }
+
+        .row {
+            margin-top: 10px;
+        }
+
+        .flights tr td, th {
+            padding: 5px;
+            border: 1px solid steelblue;
+            width: 100px;
+        }
+
+        .flights td:last-child, td:first-child {
+            width: fit-content;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .button-container button {
+            width: 150px;
+        }
+
+        h3 {
+            background-image: url("../static/listmark.png");
+            background-repeat: no-repeat;
+            padding: 2px;
+            padding-left: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+<form id="search-form" action="flights-list.html" th:action="@{/flights}" th:method="get" th:object="${searchRequest}">
+
+    <h3 th:text="'Flights search'">Flights search:</h3>
+
+    <div class="row">
+        <label for="departure-airport-input" th:text="'Departure airport:'">Departure airport:</label>
+        <select id="departure-airport-input" name="departureAirport" th:field="*{departureAirportCode}">
+            <option th:each="airport : ${airports}" th:value="${airport.getCode()}"
+                    th:text="${airport.getCity()}"></option>
+        </select>
+
+        <label for="arrival-airport-input" th:text="'Arrival airport:'">Arrival airport:</label>
+        <select id="arrival-airport-input" name="arrivalAirport" th:field="*{arrivalAirportCode}">
+            <option th:each="airport : ${airports}" th:value="${airport.getCode()}"
+                    th:text="${airport.getCity()}"></option>
+        </select>
+
+        <label for="departure-date-input" th:text="'Departure date:'">Departure date:</label>
+        <input type="date" id="departure-date-input" name="departureDate" th:field="*{flightDate}">
+
+    </div>
+
+    <form th:action="@{/flights}" method="get">
+        <button type="submit">Search Flights</button>
+    </form>
+
+    <table class="flights">
+        <thead>
+        <tr>
+            <th th:text="'ID'">ID</th>
+            <th th:text="'Flight number'">Flight number</th>
+            <th th:text="'Flight date time'">Flight date time</th>
+            <th th:text="'Aircraft model'">Aircraft model</th>
+            <th th:text="'Departure airport'">Departure airport</th>
+            <th th:text="'Arrival airport'">Arrival airport</th>
+            <th th:text="Actions">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="flight : ${flights}">
+            <td th:text="${flight.getId()}"/>
+            <td th:text="${flight.getNumber()}"/>
+            <td th:with="departureDateTime=${flight.getSchedule().stream().findFirst().get().getDepartureDateTime()}">
+                <span th:text="${#temporals.format(departureDateTime, 'yyyy-MM-dd')}"></span>
+                <br/>
+                <span th:text="${#temporals.format(departureDateTime, 'HH:mm')}"></span>
+            </td>
+            <td th:text="${flight.getAircraft().getModel()}"/>
+            <td th:text="${flight.getDepartureAirport().getCity()}"/>
+            <td th:text="${flight.getArrivalAirport().getCity()}"/>
+            <td>
+                <form th:action="@{/flights/book}" method="get">
+                    <input type="hidden" name="id" th:value="${flight.getId()}"/>
+                    <button type="submit">Book</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="button-container">
+        <form th:action="@{/}" method="get">
+            <button type="submit">Home page</button>
+        </form>
+    </div>
+</form>
+</body>
+</html>
