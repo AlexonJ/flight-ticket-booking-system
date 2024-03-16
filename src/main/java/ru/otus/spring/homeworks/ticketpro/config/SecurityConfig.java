@@ -38,7 +38,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sessionConfigurer -> sessionConfigurer.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .authorizeHttpRequests(authorizationManager -> authorizationManager
-                        .requestMatchers("/error/**", "h2-console/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers("/error", "h2-console/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers("/","/index.html").authenticated()
                         .requestMatchers(HttpMethod.GET, bookingsApiPatterns).hasAnyAuthority(
                                 "READ_BOOKINGS", "READ_BOOKINGS_OWNER")
                         .requestMatchers(HttpMethod.POST, bookingsApiPatterns).hasAuthority("CREATE_BOOKINGS")
