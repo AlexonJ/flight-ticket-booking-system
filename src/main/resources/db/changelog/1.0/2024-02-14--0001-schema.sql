@@ -42,8 +42,8 @@ CREATE TABLE flights_schedule
 (
     id                      BIGSERIAL PRIMARY KEY,
     flight_id               BIGSERIAL REFERENCES flights(id),
-    departure_date_time     DATETIME,
-    arrival_date_time       DATETIME
+    departure_date_time     TIMESTAMP,
+    arrival_date_time       TIMESTAMP
 );
 
 CREATE TABLE passengers
@@ -67,7 +67,7 @@ CREATE TABLE users
 CREATE TABLE seat_bookings
 (
     id                      BIGSERIAL PRIMARY KEY,
-    booking_date            DATETIME,
+    booking_date            TIMESTAMP,
     flight_id               BIGSERIAL REFERENCES flights(id),
     flight_date             DATE,
     user_id                 BIGSERIAL REFERENCES users(id),
@@ -78,6 +78,6 @@ CREATE TABLE seat_bookings
 CREATE TABLE roles_authorities
 (
     id        BIGSERIAL PRIMARY KEY,
-    role      VARCHAR_IGNORECASE(50),
-    authority VARCHAR_IGNORECASE(50)
+    role      VARCHAR(50),
+    authority VARCHAR(50)
 );

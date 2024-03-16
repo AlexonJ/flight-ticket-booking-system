@@ -1,9 +1,8 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:ticketbookingdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:ticketprodb}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
   jpa:
     open-in-view: false
     generate-ddl: false
@@ -18,9 +17,9 @@ spring:
       ROOT: INFO
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
-    url: jdbc:h2:mem:ticketbookingdb
-    user: sa
-    password:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:ticketprodb}
+    user: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
     enabled: true
   h2:
     console:
@@ -32,33 +31,11 @@ spring:
   data:
     rest:
       base-path: /api-rest
-#  mail:
-#    host: smtp.yandex.ru
-#    port: 25
-#    username: testalexandertest
-#    password: shuarxibyprcvopn
-#    properties:
-#      mail:
-#        smtp:
-#          auth: true
-#          starttls:
-#            enable: true
-#  mail:
-#    host: smtp.yandex.ru
-#    port: 465
-#    username: mymail@gmail.com
-#    password: mypassword
-#    protocol: smtp
-#    tls: true
-#    properties.mail.smtp:
-#      auth: true
-#      starttls.enable: true
-#      ssl.trust: smtp.yandex.ru
   mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ${APP_SMTP_USERNAME:TEST_USERNAME}
-    password: ${APP_SMTP_PASSWORD:TEST_PASSWORD}
+    host: ${SPRING_MAIL_HOST:}
+    port: ${SPRING_MAIL_PORT:}
+    username: ${SPRING_MAIL_USERNAME:TEST_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD:TEST_PASSWORD}
     protocol: smtp
     tls: true
     properties.mail.smtp:
@@ -72,15 +49,3 @@ service:
   flights-path: "flights"
   schedule-path: "schedule"
   seats-path: "seats"
-
-
-#  testalexandertest
-#  Grks#kGoejMEXG48
-# shuarxibyprcvopn
-# qdgd cdbp owwd isgs
-#  spring.mail.host=smtp.gmail.com
-#  spring.mail.port=587
-#  spring.mail.username= gmail user name
-#  spring.mail.password= your password
-#  spring.mail.properties.mail.smtp.auth=true
-#  spring.mail.properties.mail.smtp.starttls.enable=true

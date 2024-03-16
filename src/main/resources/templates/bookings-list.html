@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>List of all books</title>
+    <title>List of all bookings</title>
     <style type="text/css">
         body {
             padding: 50px;
@@ -86,7 +86,6 @@
                 <input type="hidden" name="id" th:value="${booking.getId()}"/>
                 <button type="submit">Edit</button>
             </form>
-            <!--            <a th:href="@{/books/edit(id=${book.id})}" href="book-edit.html" th:text="Edit">Edit</a>-->
         </td>
 
         <td>
@@ -95,8 +94,6 @@
                 <input type="hidden" name="id" th:value="${booking.getId()}"/>
                 <button type="submit">Delete</button>
             </form>
-
-            <!--            <a th:href="@{/books/delete(id=${book.id})}" href="book-edit.html" th:text="Delete">Delete</a>-->
         </td>
 
     </tr>
@@ -107,7 +104,7 @@
         <button type="submit">Home page</button>
     </form>
 
-    <form th:action="@{/books/edit}" method="get">
+    <form th:action="@{/bookings/edit}" method="get">
         <input type="hidden" name="id" th:value="0"/>
         <button type="submit">Add new book</button>
     </form>

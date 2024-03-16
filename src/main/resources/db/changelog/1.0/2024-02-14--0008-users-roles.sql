@@ -7,9 +7,9 @@ VALUES ('admin', 'ADMIN', '$2a$12$WgTiyMzOuqjID1J.SWj50ulVD5VYKk9BS9B2YegG/XQ.6p
        ('airborne88', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),   -- usr
        ('wanderlust99', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'), -- usr
        ('aviator55', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),    -- usr
-       ('frequentflyer23', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),
-       ('cloudsurfer77', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),
-       ('adventureseeker11', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),
+       ('frequentflyer23', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'), -- usr
+       ('cloudsurfer77', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'), -- usr
+       ('adventureseeker11', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'), -- usr
        ('bookingservice', 'MANAGER_BOOKING', '$2a$12$4Vk8blySGcA6XDQ82NH8oO5e00SF5aeTUDl9iN0fPqObtkktJhjf.'), -- mng
        ('flightservice', 'MANAGER_FLIGHTS', '$2a$12$4Vk8blySGcA6XDQ82NH8oO5e00SF5aeTUDl9iN0fPqObtkktJhjf.'); -- mng
 
