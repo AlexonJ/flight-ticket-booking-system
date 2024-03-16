@@ -19,6 +19,7 @@ import ru.otus.spring.homeworks.ticketpro.models.db.users.User;
 import ru.otus.spring.homeworks.ticketpro.models.search.BookingSearchFields;
 import ru.otus.spring.homeworks.ticketpro.repositories.BookingRepository;
 import ru.otus.spring.homeworks.ticketpro.repositories.ScheduleRepository;
+import ru.otus.spring.homeworks.ticketpro.repositories.SettingsProvider;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -50,6 +51,8 @@ public class BookingServiceImpl implements BookingService {
     private final MessageGenerationService messageGenerationService;
 
     private final ScheduleRepository scheduleRepository;
+
+    private final SettingsProvider settingsProvider;
 
     private final DtoMapper mapper;
 
@@ -91,9 +94,10 @@ public class BookingServiceImpl implements BookingService {
                 .orElseThrow(() -> new CommonValidationException(
                         SCHEDULE_NOT_FOUND_FOR_FLIGHT_BY_DATE.getCode(),
                         SCHEDULE_NOT_FOUND_FOR_FLIGHT_BY_DATE.getMessage()));
-
-        SimpleMailMessage message = messageGenerationService.generateBookingConfirmation(booking, schedule);
-        emailSendingService.sendSimpleEmail(message);
+        if (settingsProvider.getAllowSendingEmail()) {
+            SimpleMailMessage message = messageGenerationService.generateBookingConfirmation(booking, schedule);
+            emailSendingService.sendSimpleEmail(message);
+        }
 
         return Optional.of(bookingRepository.save(booking)).map(mapper::seatBookingToSeatBookingDto).get();
 

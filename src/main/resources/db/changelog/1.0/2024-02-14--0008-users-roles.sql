@@ -1,17 +1,18 @@
 INSERT INTO users(username, role, password)
-VALUES ('admin', 'ADMIN', '$2a$12$WgTiyMzOuqjID1J.SWj50ulVD5VYKk9BS9B2YegG/XQ.6p/YaeyXC'),       -- adm
-       ('skywalker92', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),  -- usr
-       ('traveler123', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),  -- usr
-       ('flyhigh007', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),   -- usr
-       ('jetsetter22', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),  -- usr
-       ('airborne88', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),   -- usr
-       ('wanderlust99', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'), -- usr
-       ('aviator55', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),    -- usr
-       ('frequentflyer23', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'), -- usr
-       ('cloudsurfer77', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'), -- usr
-       ('adventureseeker11', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'), -- usr
-       ('bookingservice', 'MANAGER_BOOKING', '$2a$12$4Vk8blySGcA6XDQ82NH8oO5e00SF5aeTUDl9iN0fPqObtkktJhjf.'), -- mng
-       ('flightservice', 'MANAGER_FLIGHTS', '$2a$12$4Vk8blySGcA6XDQ82NH8oO5e00SF5aeTUDl9iN0fPqObtkktJhjf.'); -- mng
+VALUES ('admin', 'ADMIN', '$2a$12$WgTiyMzOuqjID1J.SWj50ulVD5VYKk9BS9B2YegG/XQ.6p/YaeyXC'),                      -- adm
+       ('skywalker92', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),                 -- usr
+       ('traveler123', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),                 -- usr
+       ('flyhigh007', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),                  -- usr
+       ('jetsetter22', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),                 -- usr
+       ('airborne88', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),                  -- usr
+       ('wanderlust99', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),                -- usr
+       ('aviator55', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),                   -- usr
+       ('frequentflyer23', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),             -- usr
+       ('cloudsurfer77', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),               -- usr
+       ('adventureseeker11', 'USER', '$2a$12$7jmkn4CHr61te.s6YI2BJO925zzSnTdYPzhDx5skHtoYc4FnOuAAu'),           -- usr
+       ('bookingservice', 'MANAGER_BOOKINGS', '$2a$12$4Vk8blySGcA6XDQ82NH8oO5e00SF5aeTUDl9iN0fPqObtkktJhjf.'),   -- mng
+       ('flightservice', 'MANAGER_FLIGHTS', '$2a$12$4Vk8blySGcA6XDQ82NH8oO5e00SF5aeTUDl9iN0fPqObtkktJhjf.'),    -- mng
+       ('scheduleservice', 'MANAGER_SCHEDULE', '$2a$12$4Vk8blySGcA6XDQ82NH8oO5e00SF5aeTUDl9iN0fPqObtkktJhjf.'); -- mng
 
 INSERT INTO roles_authorities(role, authority)
 VALUES
@@ -43,9 +44,8 @@ VALUES
 
     -- MANAGER_FLIGHTS AUTHORITIES
     ('MANAGER_FLIGHTS', 'READ_FLIGHTS'),
-    ('MANAGER_FLIGHTS', 'CREATE_BOOKINGS'),
-    ('MANAGER_FLIGHTS', 'DELETE_BOOKINGS'),
-    ('MANAGER_FLIGHTS', 'READ_FLIGHTS'),
+    ('MANAGER_FLIGHTS', 'CREATE_FLIGHTS'),
+    ('MANAGER_FLIGHTS', 'DELETE_FLIGHTS'),
     ('MANAGER_FLIGHTS', 'READ_SEATS'),
 
     -- MANAGER_SCHEDULE AUTHORITIES

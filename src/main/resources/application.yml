@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: TicketPro
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:ticketprodb}
     username: ${SPRING_DATASOURCE_USERNAME:sa}
@@ -44,6 +46,7 @@ spring:
       ssl.trust: smtp.gmail.com
 
 service:
+  allow-sending-email: ${SERVICE_ALLOW_SENDING_EMAIL:false}
   base-path: "api/v1/"
   bookings-path: "bookings"
   flights-path: "flights"

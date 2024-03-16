@@ -11,4 +11,6 @@ public interface SettingsProvider {
     String getSchedulePath();
 
     String getSeatsPath();
+
+    Boolean getAllowSendingEmail();
 }

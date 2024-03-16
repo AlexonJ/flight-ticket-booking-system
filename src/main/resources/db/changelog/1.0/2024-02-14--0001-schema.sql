@@ -7,8 +7,9 @@ CREATE TABLE airports
 
 CREATE TABLE airlines
 (
-    id   BIGSERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    id      BIGSERIAL PRIMARY KEY,
+    name    VARCHAR(255),
+    website VARCHAR(1024)
 );
 
 CREATE TABLE aircrafts

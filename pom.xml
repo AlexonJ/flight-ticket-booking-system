@@ -23,7 +23,6 @@
         <liquibase.version>4.23.0</liquibase.version>
         <org.lombok.version>1.18.30</org.lombok.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
-        <checkstyle-plugin.version>3.2.2</checkstyle-plugin.version>
         <spring-security.version>6.0.2</spring-security.version>
     </properties>
 

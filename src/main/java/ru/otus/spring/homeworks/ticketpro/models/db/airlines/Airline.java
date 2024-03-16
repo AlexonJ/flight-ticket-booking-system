@@ -22,4 +22,6 @@ public class Airline {
     @Column
     private String name;
 
+    @Column
+    private String website;
 }

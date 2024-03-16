@@ -9,6 +9,6 @@ public class AirlineDto {
 
     private String name;
 
-    private String websiteLink;
+    private String website;
 
 }

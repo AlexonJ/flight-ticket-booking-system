@@ -15,5 +15,6 @@ public class AppConfig implements SettingsProvider {
     private String bookingsPath;
     private String schedulePath;
     private String seatsPath;
+    private Boolean allowSendingEmail;
 
 }
